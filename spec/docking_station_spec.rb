@@ -6,7 +6,13 @@ describe DockingStation do
 end
 end
 
+
+
 =begin
+
+describe Bike do
+it { is_expected.to respond_to :working?}
+end 
 
 Shorter option:
 describe DockingStation do
