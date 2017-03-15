@@ -6,7 +6,7 @@ describe DockingStation do
 end
 
   it "gets a bike and checks the bike is working" do
-    bike = subject.release_bike
+    bike = Bike.new
     expect(bike.working?).to eq true
   end
 
@@ -18,10 +18,11 @@ end
 
   #ability to report docked bikes
   it "checks if bike has been docked" do
-    bike = subject.release_bike
+    bike = Bike.new
     #We want to return the bike we dock
     expect(subject.dock(bike)).to eq bike
   end
+
 
   it "return all docked bikes" do
     bike = Bike.new
@@ -29,8 +30,19 @@ end
     #return bikes
     expect(subject.bike).to eq bike
   end
-
+  describe '#release_bike' do
+    it "gives error message when user tries to release bikes and there are none" do
+      #if subject.bike == nil
+        expect { subject.release_bike }.to raise_error("No bikes available")
+      end
+    it 'releases a bike' do
+      bike = Bike.new
+      subject.dock(bike)
+      expect(subject.release_bike).to eq bike
+    end
+  end
 end
+
 
 #subject is the instance of the class, testiable instance.
 
