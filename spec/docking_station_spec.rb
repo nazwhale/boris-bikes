@@ -4,15 +4,22 @@ describe DockingStation do
   it "responds to release_bike" do #New instance to respond to release_bike method.
     expect(subject).to respond_to :release_bike #Expect the 'subject' i.e. instance, to respond to the release_bike method.
 end
+it "gets a bike and checks the bike is working" do
+  bike = subject.release_bike
+  expect(bike.working?).to eq true
+end
 end
 
+#subject is the instance of the class, testiable instance.
 
+#station is an instance of a class DockingStation.
+#call .release_bike, and assign to bike.
 
 =begin
 
 describe Bike do
 it { is_expected.to respond_to :working?}
-end 
+end
 
 Shorter option:
 describe DockingStation do
