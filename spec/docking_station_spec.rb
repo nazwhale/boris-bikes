@@ -12,6 +12,24 @@ end
 
   #test to dock a bike at a docking station
   it { is_expected.to respond_to(:dock).with(1).argument }
+
+  #ability to remember docked bikes
+  it { is_expected.to respond_to(:bike) }
+
+  #ability to report docked bikes
+  it "checks if bike has been docked" do
+    bike = subject.release_bike
+    #We want to return the bike we dock
+    expect(subject.dock(bike)).to eq bike
+  end
+
+  it "return all docked bikes" do
+    bike = Bike.new
+    subject.dock(bike)
+    #return bikes
+    expect(subject.bike).to eq bike
+  end
+
 end
 
 #subject is the instance of the class, testiable instance.
