@@ -52,5 +52,14 @@ end
       subject.dock(bike)
       expect(subject.release_bike).to eq bike
     end
+
+  describe 'dock' do
+    it 'lets user report broken bike when docking it' do
+      #bike = Bike.new(true)
+      #subject.dock(bike)
+      expect(subject.dock(Bike.new("broken"))[-1].working?).to eq false
+    end
+  end
+
   end
 end

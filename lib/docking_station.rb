@@ -15,6 +15,7 @@ DEFAULT_CAPACITY = 20
   end
 
   def dock(bike)
+
     #Use an instance variable to store the bike in the 'state' of this instance
     fail "Docking station full" if full?
     @bikes << bike
@@ -29,4 +30,6 @@ DEFAULT_CAPACITY = 20
   def empty?
     @bikes.empty?
   end
+
+
 end
