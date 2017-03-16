@@ -13,9 +13,6 @@ end
   #test to dock a bike at a docking station
   it { is_expected.to respond_to(:dock).with(1).argument }
 
-  #ability to remember docked bikes
-  it { is_expected.to respond_to(:bikes) }
-
   #ability to report docked bikes
   it "checks if bike has been docked" do
     bike = Bike.new
@@ -32,7 +29,7 @@ end
     bike = Bike.new
     subject.dock(bike)
     #return bikes
-    expect(subject.bikes).to eq [bike]
+    expect(subject.release_bike).to eq bike
   end
 
   describe 'initialization' do
@@ -62,6 +59,7 @@ end
       subject.dock(Bike.new("broken"))
       expect(subject.release_bike).to eq nil
     end
+  end
 
   describe 'dock' do
     it 'lets user report broken bike when docking it' do
@@ -71,5 +69,5 @@ end
     end
   end
 
-  end
+
 end
