@@ -10,8 +10,9 @@ DEFAULT_CAPACITY = 20
   end
 
   def release_bike
+    #I'd like docking stations not to release broken bikes.
     fail "No bikes available" if empty?
-    @bikes.pop
+    @bikes[-1].working? == false ? nil : @bikes.pop
   end
 
   def dock(bike)

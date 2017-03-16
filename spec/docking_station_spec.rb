@@ -23,6 +23,11 @@ end
     expect(subject.dock(bike)).to eq [bike]
   end
 
+  it 'accepts broken bikes' do
+    bike = Bike.new("broken")
+    expect(subject.dock(bike)).to eq [bike]
+  end
+
   it "return all docked bikes" do
     bike = Bike.new
     subject.dock(bike)
@@ -51,6 +56,11 @@ end
       bike = Bike.new
       subject.dock(bike)
       expect(subject.release_bike).to eq bike
+    end
+
+    it 'doesn\'t release broken bikes' do
+      subject.dock(Bike.new("broken"))
+      expect(subject.release_bike).to eq nil
     end
 
   describe 'dock' do
