@@ -35,7 +35,6 @@ end
     expect { subject.dock Bike.new }.to raise_error("Docking station full")
   end
 
-
   describe '#release_bike' do
     it "gives error message when user tries to release bikes and there are none" do
         expect { subject.release_bike }.to raise_error("No bikes available")
@@ -44,7 +43,7 @@ end
     it 'releases a bike' do
       bike = Bike.new
       subject.dock(bike)
-      expect(subject.release_bike).to eq [bike]
+      expect(subject.release_bike).to eq bike
     end
   end
 end
