@@ -6,7 +6,7 @@ describe DockingStation do
 
   it "responds to release_bike" do #New instance to respond to release_bike method.
     expect(subject).to respond_to :release_bike #Expect the 'subject' i.e. instance, to respond to the release_bike method.
-end
+  end
 
   #test to dock a bike at a docking station
   it { is_expected.to respond_to(:dock).with(1).argument }
@@ -43,6 +43,19 @@ end
       allow(bike).to receive(:working?) {true}
       subject.dock(bike)
       expect(subject.release_bike).to eq bike
+    end
+
+  describe 'unload_broken' do
+      it 'unloads all broken bikes from docking station to van' do
+        #load both broken and working bikes into station
+        broken_bike = double(:bike, working?: false)
+        working_bike = double(:bike, working?: true)
+        5.times {subject.dock(working_bike)}
+        5.times {subject.dock(broken_bike)}
+        subject.unload_broken
+        expect(subject.bikes).not_to include broken_bike
+      end
+
     end
 
   describe 'dock' do

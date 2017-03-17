@@ -1,7 +1,7 @@
 require_relative 'bike'
 
 class DockingStation
-attr_reader :capacity
+attr_reader :capacity, :bikes
 DEFAULT_CAPACITY = 20
 
   def initialize(capacity = DEFAULT_CAPACITY)
@@ -22,9 +22,18 @@ DEFAULT_CAPACITY = 20
     @bikes << bike
   end
 
-  private
+  def unload_broken
+    broken_delivery = []
+    bikes.each do |bike|
+      broken_delivery << bike unless bike.working?
+      bikes.delete(bike) unless bike.working?
+    end
+    broken_delivery
+  end
 
-attr_reader :bikes
+  #I'd like vans to take broken bikes from docking stations and deliver them to garages to be fixed.
+
+  private
 
   def full?
     @bikes.length >= @capacity
