@@ -1,4 +1,5 @@
 require_relative 'bike'
+require_relative 'van'
 
 class DockingStation
 attr_reader :capacity, :bikes
@@ -22,6 +23,13 @@ DEFAULT_CAPACITY = 20
     @bikes << bike
   end
 
+  # def load_van (van)
+  #   unload_broken
+  # end
+  #I'd like vans to take broken bikes from docking stations and deliver them to garages to be fixed.
+
+  private
+
   def unload_broken
     broken_delivery = []
     bikes.each do |bike|
@@ -30,10 +38,6 @@ DEFAULT_CAPACITY = 20
     end
     broken_delivery
   end
-
-  #I'd like vans to take broken bikes from docking stations and deliver them to garages to be fixed.
-
-  private
 
   def full?
     @bikes.length >= @capacity

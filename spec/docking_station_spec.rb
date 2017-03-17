@@ -47,29 +47,35 @@ describe DockingStation do
 
   end
 
-  describe '#unload_broken' do
+  #THESE ARE TESTS FOR UNLOAD_BROKEN METHOD WHICH WERE THEN MADE PRIVATE
+  # describe '#unload_broken' do
+  #
+  #
+  #   it 'After unload, theres no broken bikes left' do
+  #       broken_bike = double(:bike, working?: false)
+  #       working_bike = double(:bike, working?: true)
+  #       5.times {subject.dock(working_bike)}
+  #       5.times {subject.dock(broken_bike)}
+  #       subject.unload_broken
+  #       expect(subject.bikes).not_to include broken_bike
+  #       #load both broken and working bikes into station
+  #     end
+  #
+  #     it "returns array of broken bikes" do
+  #       broken_bike = double(:bike, working?: false)
+  #       working_bike = double(:bike, working?: true)
+  #       5.times {subject.dock(working_bike)}
+  #       5.times {subject.dock(broken_bike)}
+  #       expect(subject.unload_broken).not_to include working_bike
+  #
+  #     end
+  #
+  #   end
+
+  describe "#load_van" do
 
 
-    it 'After unload, theres no broken bikes left' do
-        broken_bike = double(:bike, working?: false)
-        working_bike = double(:bike, working?: true)
-        5.times {subject.dock(working_bike)}
-        5.times {subject.dock(broken_bike)}
-        subject.unload_broken
-        expect(subject.bikes).not_to include broken_bike
-        #load both broken and working bikes into station
-      end
-
-      it "returns array of broken bikes" do
-        broken_bike = double(:bike, working?: false)
-        working_bike = double(:bike, working?: true)
-        5.times {subject.dock(working_bike)}
-        5.times {subject.dock(broken_bike)}
-        expect(subject.unload_broken).not_to include working_bike
-
-      end
-
-    end
+  end
 
 
 
