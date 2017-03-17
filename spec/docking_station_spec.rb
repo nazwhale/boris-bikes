@@ -3,6 +3,7 @@ require 'docking_station'
 describe DockingStation do
 
   let (:bike) { double :bike }
+  let (:van) {double :van}
 
   it "responds to release_bike" do #New instance to respond to release_bike method.
     expect(subject).to respond_to :release_bike #Expect the 'subject' i.e. instance, to respond to the release_bike method.
@@ -48,36 +49,29 @@ describe DockingStation do
   end
 
   #THESE ARE TESTS FOR UNLOAD_BROKEN METHOD WHICH WERE THEN MADE PRIVATE
-  # describe '#unload_broken' do
-  #
-  #
-  #   it 'After unload, theres no broken bikes left' do
-  #       broken_bike = double(:bike, working?: false)
-  #       working_bike = double(:bike, working?: true)
-  #       5.times {subject.dock(working_bike)}
-  #       5.times {subject.dock(broken_bike)}
-  #       subject.unload_broken
-  #       expect(subject.bikes).not_to include broken_bike
-  #       #load both broken and working bikes into station
-  #     end
-  #
-  #     it "returns array of broken bikes" do
-  #       broken_bike = double(:bike, working?: false)
-  #       working_bike = double(:bike, working?: true)
-  #       5.times {subject.dock(working_bike)}
-  #       5.times {subject.dock(broken_bike)}
-  #       expect(subject.unload_broken).not_to include working_bike
-  #
-  #     end
-  #
-  #   end
-
-  describe "#load_van" do
+  describe '#unload_broken' do
 
 
-  end
+    it 'After unload, theres no broken bikes left' do
+        broken_bike = double(:bike, working?: false)
+        working_bike = double(:bike, working?: true)
+        5.times {subject.dock(working_bike)}
+        5.times {subject.dock(broken_bike)}
+        subject.unload_broken(van)
+        expect(subject.bikes).not_to include broken_bike
+        #load both broken and working bikes into station
+      end
 
+      it "returns array of broken bikes" do
+        broken_bike = double(:bike, working?: false)
+        working_bike = double(:bike, working?: true)
+        5.times {subject.dock(working_bike)}
+        5.times {subject.dock(broken_bike)}
+        expect(subject.unload_broken(van)).not_to include working_bike
 
+      end
+
+    end
 
   describe 'dock' do
     it 'lets user report broken bike when docking it' do

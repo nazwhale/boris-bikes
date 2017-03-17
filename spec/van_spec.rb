@@ -12,7 +12,8 @@ describe Van do
   end
 
   it "can pick up broken bikes from the docking station" do
-    allow(docking_station).to receive(:load_van) {[bike, bike, bike]}
+    allow(docking_station).to receive(:unload_broken) {[bike, bike, bike]}
+    #p subject.collect_from_station(docking_station)
 
     expect(subject.collect_from_station(docking_station)).to eq [bike,bike,bike]
   end

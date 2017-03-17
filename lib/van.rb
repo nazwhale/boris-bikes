@@ -1,12 +1,13 @@
 class Van
 
+  attr_reader :bikes_in_van
   def initialize
     @bikes_in_van = []
   end
 
   def collect_from_station(station)
-    station.load_van
+    @bikes_in_van << station.unload_broken(self)
+    @bikes_in_van.flatten!
   end
 
-  attr_reader :bikes_in_van
 end
