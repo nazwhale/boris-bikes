@@ -45,18 +45,33 @@ describe DockingStation do
       expect(subject.release_bike).to eq bike
     end
 
-  describe 'unload_broken' do
-      it 'unloads all broken bikes from docking station to van' do
-        #load both broken and working bikes into station
+  end
+
+  describe '#unload_broken' do
+
+
+    it 'After unload, theres no broken bikes left' do
         broken_bike = double(:bike, working?: false)
         working_bike = double(:bike, working?: true)
         5.times {subject.dock(working_bike)}
         5.times {subject.dock(broken_bike)}
         subject.unload_broken
         expect(subject.bikes).not_to include broken_bike
+        #load both broken and working bikes into station
+      end
+
+      it "returns array of broken bikes" do
+        broken_bike = double(:bike, working?: false)
+        working_bike = double(:bike, working?: true)
+        5.times {subject.dock(working_bike)}
+        5.times {subject.dock(broken_bike)}
+        expect(subject.unload_broken).not_to include working_bike
+
       end
 
     end
+
+
 
   describe 'dock' do
     it 'lets user report broken bike when docking it' do
@@ -65,5 +80,4 @@ describe DockingStation do
     end
   end
 
-  end
 end
